@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Login } from "./login"
+import { Login } from "../routes/login"
 
 function App(): JSX.Element {
     return (

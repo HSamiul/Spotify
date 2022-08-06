@@ -4,12 +4,10 @@ import '../styles/login.scss'
 export function Login(): JSX.Element {
     const [loggedIn, setLoggedIn] = useState(false)
 
-
-
     if (!loggedIn) {
         return (
             <div className="login">
-                <form action="http://localhost:3001/login" method="GET">
+                <form action="/api/login" method="GET">
                     <input type="submit" value="Press to login" />
 
                 </form>

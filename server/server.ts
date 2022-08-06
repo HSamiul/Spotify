@@ -3,9 +3,7 @@ import express from "express";
 import cors from "cors"
 
 const app = express()
-app.use(cors({
-    origin: "*"
-}))
+app.use(cors())
 
 type auth_body = {
     access_token: string,
@@ -19,7 +17,7 @@ var email: String | null = null
 const client_id = process.env.CLIENT_ID! // unsafe
 const client_secret = process.env.CLIENT_SECRET!
 const port = process.env.PORT || 3001
-const redirect_uri = `http://localhost:${port}/callback`
+const redirect_uri = `http://localhost:${port}/api/callback`
 
 const login_params = new URLSearchParams({
     response_type: "code",
@@ -28,15 +26,15 @@ const login_params = new URLSearchParams({
     redirect_uri: redirect_uri
 })
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("pong")
 })
 
-app.get("/login", (req, res) => {
+app.get("/api/login", (req, res) => {
     res.redirect("https://accounts.spotify.com/authorize?" + login_params.toString())
 })
 
-app.get("/callback", (req, res) => {
+app.get("/api/callback", (req, res) => {
     res.send("callback")
 
     const callback_url = new URL(req.url, `http://${req.headers.host}`)
@@ -72,4 +70,4 @@ app.get("/callback", (req, res) => {
 //     })
 // })
 
-app.listen(port, () => { console.log("Started spotify server");})
+app.listen(port, () => { console.log(`Started spotify server | PORT ${port}`);})
