@@ -1,0 +1,18 @@
+@use 'variables' as v;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+
+.app {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: v.$background ;
+    color: v.$lightText;
+    font-family: 'Poppins', sans-serif;
+
+    input { font-family: 'Poppins', sans-serif; }
+    input[type=submit]:hover { cursor: pointer; }
+
+    a {
+        color: v.$accent;
+    }
+}

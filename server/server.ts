@@ -35,8 +35,6 @@ app.get("/api/login", (req, res) => {
 })
 
 app.get("/api/callback", (req, res) => {
-    res.send("callback")
-
     const callback_url = new URL(req.url, `http://${req.headers.host}`)
     const code = callback_url.searchParams.get("code")
     
@@ -60,6 +58,8 @@ app.get("/api/callback", (req, res) => {
             console.log(data.access_token)
         })
     })
+
+    res.redirect("localhost:3000/profile")
 })
 
 // const test_req = fetch('https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V', {
